@@ -68,7 +68,7 @@ test('Watching Model Types', function(assert) {
     assert.equal(types[0].count, 1);
   }
 
-  debugAdapter.watchModelTypes(added, updated);
+  const release = debugAdapter.watchModelTypes(added, updated);
 
   run(() => {
     store.push({
@@ -81,6 +81,8 @@ test('Watching Model Types', function(assert) {
       }
     });
   });
+
+  release();
 });
 
 test("Watching Records", function(assert) {
